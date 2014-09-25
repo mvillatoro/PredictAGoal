@@ -2,7 +2,7 @@
 angular.module('app.controllers', [])   
 
     .controller('AdminSettingsCtrl', [
-        '$scope', '$location', '$window', 'League', 'Teams', function ($scope, $location, $window, League, Teams) {
+        '$scope', '$location', '$window', 'League', function ($scope, $location, $window, League) {
             $scope.$root.title = 'AngularJS SPA | Admin Settings';
 
             $scope.availableLeagues = [];
@@ -18,7 +18,7 @@ angular.module('app.controllers', [])
             };
 
             //Muestra el modo de edicion de team
-            $scope.AddTeam = function () {
+            $scope.AddEquipo = function () {
                 if ($scope.ShowEdit2 === true) {
                     $scope.ShowEdit2 = false;
                 } else {
@@ -87,23 +87,34 @@ angular.module('app.controllers', [])
                 }, function (error) {
                     alert('error loading available leagues');
                 });
+            };
 
+            $scope.availableTeams= [];
 
+            $scope.loadTeams = function () {
+                League.getTeams(function (availableTeams) {
+                    $scope.availableTeams = availableTeams;
+                }, function (error) {
+                    alert('error loading available teams');
+                });
+            };
+
+            //Crear Team
+            $scope.AddTeam = function () {
+                League.AddTeam($scope.team, function (response) {
+
+                    $scope.AddEquipo();
+                    $scope.loadTeams();
+                    alert('Success');
+
+                }, function (error) {
+                    alert('Adding Failed');
+                });
+                $scope.team = {};
             };
 
             $scope.$on('$viewContentLoaded', function () {
                 $window.ga('send', 'pageview', { 'page': $location.path(), 'title': $scope.$root.title });
             });
-
-            $scope.availableTeams= [];
-
-            $scope.loadTeams = function () {
-                Team.getTeams(function (availableTeams) {
-                    $scope.availableTeams = availableTeams;
-                }, function (error) {
-                    alert('error loading available leagues');
-                });
-            };
-
         }
     ]);

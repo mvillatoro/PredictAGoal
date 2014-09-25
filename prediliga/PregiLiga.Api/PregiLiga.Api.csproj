@@ -238,6 +238,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\LeaguesController.cs" />
+    <Compile Include="Controllers\MatchController.cs" />
     <Compile Include="Controllers\TeamController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
@@ -250,6 +251,7 @@
     <Compile Include="Models\AuthModel.cs" />
     <Compile Include="Models\CreatedAccountModel.cs" />
     <Compile Include="Models\LeaguesModel.cs" />
+    <Compile Include="Models\MatchModel.cs" />
     <Compile Include="Models\RoleModel.cs" />
     <Compile Include="Models\TeamModel.cs" />
     <Compile Include="Models\UserTokenModel.cs" />

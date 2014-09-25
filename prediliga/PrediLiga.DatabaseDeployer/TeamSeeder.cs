@@ -15,7 +15,6 @@ namespace PrediLiga.DatabaseDeployer
             
         public void Seed()
         {
-
             var team = new Team
             {
                 Name = "FC Barcelona",  

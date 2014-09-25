@@ -53,7 +53,29 @@ angular.module('app.services')
                 .success(function (response) {
                     success(response);
                 }).error(error);
-            }
+            },
+
+            getTeams: function (success, error) {
+            $http
+                .get(
+                    Server.get() + '/teams/available', {
+                        headers: { 'Authorization': $cookieStore.get('access_token') }
+                    })
+                .success(function (response) {
+                    success(response);
+                })
+                .error(error);
+        },
+
+            //ADD NEW TEAM
+            AddTeam: function (TeamModel, success, error) {
+                $http.post(Server.get() + '/teams/addTeam', TeamModel, {
+                headers: { 'Authorization': $cookieStore.get('access_token') }
+            })
+                .success(function (response) {
+                    success(response);
+                }).error(error);
+        }
 
         };
     });

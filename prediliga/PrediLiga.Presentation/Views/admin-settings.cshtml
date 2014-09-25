@@ -60,17 +60,60 @@
             </td>
         </tr>
     </table>
-    <form ng-submit="AddTeam()">
+    <form ng-submit="AddEquipo()">
         <button class="btn btn-success" type="submit" style="float: right;" ng-disabled="ShowEdit2" disabled>Add Team</button>
     </form>
     <div class="col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4" ng-show="ShowEdit2">
-        <h3>Add New League</h3>
-        <form ng-submit="AddLeague()">
-            <input ng-model="league.Id" type="number" class="form-control" placeholder="League ID" required />
-            <input ng-model="league.Name" type="text" class="form-control" placeholder="League Name" required autofocus />
-            <button class="btn btn-success" type="submit" ng-disabled="!(league)" disabled> Done</button>
+        <h3>Add New Team</h3>
+        <form ng-submit="AddTeam()" method='post'>
+            <select class="form-control" ng-model="team.Liga">
+                <option ng-repeat="availableLeague in availableLeagues" ng-model="team.Liga">{{availableLeague.Name}}</option>
+            </select>
+            <input ng-model="team.Name" type="text" class="form-control" placeholder="Team Name" required autofocus />
+            <button class="btn btn-success" type="submit" ng-disabled="!(team)" disabled> Done</button>
         </form>
-        <form ng-submit="AddTeam()">
+        <form ng-submit="AddEquipo()">
+            <button class="btn btn-danger" type="submit"> Cancel</button>
+        </form>
+    </div>
+</div>
+
+<div ng-init="loadMatches()">
+    <h1>Teams</h1>
+    <table class="table table-hover">
+        <tr>
+            <td> </td>
+            <td>Equipo </td>
+            <td>Liga</td>
+            <td> </td>
+            <td> </td>
+        </tr>
+        <tr ng-repeat="availableTeam in availableTeams">
+            <td>   </td>
+            <td>{{availableTeam.Name}}</td>
+            <td>{{availableTeam.Liga}}</td>
+            <td><button class="btn btn-primary" type="submit">  Calendar</button></td>
+            <td><button class="btn btn-primary" type="submit">  Edit</button></td>
+            <td>
+                <form ng-submit="Delete(availableLeague.Id)">
+                    <button class="btn btn-danger" type="submit">  Disable League</button>
+                </form>
+            </td>
+        </tr>
+    </table>
+    <form ng-submit="AddEquipo()">
+        <button class="btn btn-success" type="submit" style="float: right;" ng-disabled="ShowEdit2" disabled>Add Team</button>
+    </form>
+    <div class="col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4" ng-show="ShowEdit2">
+        <h3>Add New Team</h3>
+        <form ng-submit="AddTeam()" method='post'>
+            <select class="form-control" ng-model="team.Liga">
+                <option ng-repeat="availableLeague in availableLeagues" ng-model="team.Liga">{{availableLeague.Name}}</option>
+            </select>
+            <input ng-model="team.Name" type="text" class="form-control" placeholder="Team Name" required autofocus />
+            <button class="btn btn-success" type="submit" ng-disabled="!(team)" disabled> Done</button>
+        </form>
+        <form ng-submit="AddEquipo()">
             <button class="btn btn-danger" type="submit"> Cancel</button>
         </form>
     </div>

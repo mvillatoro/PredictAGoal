@@ -8,6 +8,7 @@ angular.module('app.controllers')
                 $location.path('/login');
             };
 
+
             $scope.$on('$viewContentLoaded', function() {
                 $window.ga('send', 'pageview', { 'page': $location.path(), 'title': $scope.$root.title });
             });

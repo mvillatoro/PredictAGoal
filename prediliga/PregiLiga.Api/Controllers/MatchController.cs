@@ -3,6 +3,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Http;
+using System.Web.Mvc;
 using AttributeRouting.Web.Mvc;
 using AutoMapper;
 using Microsoft.Ajax.Utilities;
@@ -14,13 +15,14 @@ using PregiLiga.Api.Models;
 
 namespace PregiLiga.Api.Controllers
 {
-    public class TeamController : BaseApiController
+    public class MatchController : BaseApiController
     {
-        readonly IReadOnlyRepository _readOnlyRepository;
+
+         readonly IReadOnlyRepository _readOnlyRepository;
         readonly IMappingEngine _mappingEngine;
         readonly IWriteOnlyRepository _writeOnlyRepository;
 
-        public TeamController(IReadOnlyRepository readOnlyRepository, IWriteOnlyRepository writeOnlyRepository, IMappingEngine mappingEngine)
+        public MatchController(IReadOnlyRepository readOnlyRepository, IWriteOnlyRepository writeOnlyRepository, IMappingEngine mappingEngine)
         {
             _readOnlyRepository = readOnlyRepository;
             _writeOnlyRepository = writeOnlyRepository;
@@ -29,29 +31,30 @@ namespace PregiLiga.Api.Controllers
 
         [System.Web.Mvc.HttpGet]
         [System.Web.Mvc.AcceptVerbs("GET", "HEAD")]
-        [GET("teams/available")]
-        public List<TeamModel> GetTeams()
+        [GET("matchs/available")]
+        public List<MatchModel> GetMatchs()
         {
             // var userTokenModel = GetUserTokenModel();
             // if (userTokenModel == null)
             //     throw new HttpException((int)HttpStatusCode.Unauthorized, "User is not authorized");
 
-            var teams = _readOnlyRepository.GetAll<Team>().ToList();
-            var teamsModel = _mappingEngine.Map<List<Team>, List<TeamModel>>(teams);
-            return teamsModel;
+            var matchs = _readOnlyRepository.GetAll<Match>().ToList();
+            var matchsModel = _mappingEngine.Map<List<Match>, List<MatchModel>>(matchs);
+            return matchsModel;
         }
 
         //ADD TEAM
         [System.Web.Mvc.HttpPost]
         [System.Web.Mvc.AcceptVerbs("POST", "HEAD")]
-        [POST("teams/addTeam")]
-        public TeamModel AddTeam([FromBody] TeamModel model)
+        [POST("matchs/addMatch")]
+        public MatchModel AddMatch([FromBody] MatchModel model)
         {
-            var newTeam = _mappingEngine.Map<TeamModel, Team>(model);
-            var createdTeam = _writeOnlyRepository.Create(newTeam);
-            var newModel = _mappingEngine.Map<Team, TeamModel>(createdTeam);
+            var newMatch = _mappingEngine.Map<MatchModel, Match>(model);
+            var createdMatch = _writeOnlyRepository.Create(newMatch);
+            var newModel = _mappingEngine.Map<Match, MatchModel>(createdMatch);
             return newModel;
         }
+
 
     }
 }
