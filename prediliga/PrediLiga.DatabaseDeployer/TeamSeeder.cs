@@ -2,12 +2,11 @@
 using NHibernate;
 using PrediLiga.Domain.Entities;
 
-
 namespace PrediLiga.DatabaseDeployer
 {
-    internal class TeamSeeder : IDataSeeder
+    public class TeamSeeder : IDataSeeder
     {
-        private readonly ISession _session;
+        readonly ISession _session;
 
         public TeamSeeder(ISession session)
         {
