@@ -12,14 +12,12 @@ namespace PrediLiga.DatabaseDeployer
         {
             _session = session;
         }
-
+            
         public void Seed()
         {
 
             var team = new Team
             {
-                Id = 01,
-                IsArchived = false,
                 Name = "FC Barcelona",  
                 Liga = "BBVA"
             };
