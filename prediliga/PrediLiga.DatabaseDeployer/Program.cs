@@ -49,7 +49,8 @@ namespace PrediLiga.DatabaseDeployer
                             {
                                 new LeagueSeeder(session),
                                 new AccountSeeder(session),
-                                new AccountLeaguesSeeder(session)
+                                new AccountLeaguesSeeder(session),
+                                new TeamSeeder(session)
                             });
                 tx.Commit();
             }
