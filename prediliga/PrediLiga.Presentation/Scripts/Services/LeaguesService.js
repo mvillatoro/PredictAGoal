@@ -55,6 +55,8 @@ angular.module('app.services')
                 }).error(error);
             },
 
+            //########################################################################
+
             getTeams: function (success, error) {
             $http
                 .get(
@@ -75,6 +77,30 @@ angular.module('app.services')
                 .success(function (response) {
                     success(response);
                 }).error(error);
+            },
+
+            //########################################################################
+
+            getMatch: function (success, error) {
+            $http
+                .get(
+                    Server.get() + '/matches/available', {
+                        headers: { 'Authorization': $cookieStore.get('access_token') }
+                    })
+                .success(function (response) {
+                    success(response);
+                })
+                .error(error);
+        },
+
+        //ADD NEW Matchs
+        AddMatch: function (MatchModel, success, error) {
+            $http.post(Server.get() + '/matches/addMatch', MatchModel, {
+                headers: { 'Authorization': $cookieStore.get('access_token') }
+            })
+            .success(function (response) {
+                success(response);
+            }).error(error);
         }
 
         };

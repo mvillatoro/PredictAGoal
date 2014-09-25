@@ -20,6 +20,7 @@ namespace PregiLiga.Api
             Mapper.CreateMap<CreatedAccountModel, Account>().ReverseMap();
             Mapper.CreateMap<Leagues, LeaguesModel>().ReverseMap();
             Mapper.CreateMap<Team, TeamModel>().ReverseMap();
+            Mapper.CreateMap<Match, MatchModel>().ReverseMap();
         }
 
         #endregion

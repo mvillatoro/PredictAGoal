@@ -7,9 +7,6 @@ namespace PregiLiga.Api.Models
         public string Liga { get; set; }
         public string EquipoCasa { get; set; }
         public string EquipoVisita { get; set; }
-        public int MarcadorCasa { get; set; }
-        public int MarcadorVisita { get; set; }
-        public bool IsClosed { get; set; }  
 
     }
 }

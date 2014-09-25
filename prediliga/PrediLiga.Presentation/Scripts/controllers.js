@@ -5,6 +5,11 @@ angular.module('app.controllers', [])
         '$scope', '$location', '$window', 'League', function ($scope, $location, $window, League) {
             $scope.$root.title = 'AngularJS SPA | Admin Settings';
 
+
+            $scope.$on('$viewContentLoaded', function () {
+                $window.ga('send', 'pageview', { 'page': $location.path(), 'title': $scope.$root.title });
+            });
+
             $scope.availableLeagues = [];
             $scope.suscribedLeages = [];
 
@@ -23,6 +28,15 @@ angular.module('app.controllers', [])
                     $scope.ShowEdit2 = false;
                 } else {
                     $scope.ShowEdit2 = true;
+                }
+            };
+
+            //Muestra el modo de edicion de partido
+            $scope.AddPartido = function () {
+                if ($scope.ShowEdit3 === true) {
+                    $scope.ShowEdit3 = false;
+                } else {
+                    $scope.ShowEdit13 = true;
                 }
             };
             //Crear Liga
@@ -113,8 +127,32 @@ angular.module('app.controllers', [])
                 $scope.team = {};
             };
 
-            $scope.$on('$viewContentLoaded', function () {
-                $window.ga('send', 'pageview', { 'page': $location.path(), 'title': $scope.$root.title });
-            });
+
+            //########################################################################
+
+            $scope.availableMatches = [];
+
+            $scope.loadMatches = function () {
+                League.getMatch(function (availableMatches) {
+                    $scope.availableMatches = availableMatches;
+                }, function (error) {
+                    alert('error loading available teams');
+                });
+            };
+
+            //Crear Team
+            $scope.AddMatch = function () {
+                League.AddMatch($scope.match, function (response) {
+
+                    $scope.AddPartido();
+                    $scope.loadMatch();
+                    alert('Success');
+
+                }, function (error) {
+                    alert('Adding Failed');
+                });
+                $scope.match = {};
+            };
+            
         }
     ]);

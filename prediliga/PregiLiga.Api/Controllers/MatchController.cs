@@ -31,7 +31,7 @@ namespace PregiLiga.Api.Controllers
 
         [System.Web.Mvc.HttpGet]
         [System.Web.Mvc.AcceptVerbs("GET", "HEAD")]
-        [GET("matchs/available")]
+        [GET("matches/available")]
         public List<MatchModel> GetMatchs()
         {
             // var userTokenModel = GetUserTokenModel();
@@ -43,10 +43,10 @@ namespace PregiLiga.Api.Controllers
             return matchsModel;
         }
 
-        //ADD TEAM
+        //ADD Mathc
         [System.Web.Mvc.HttpPost]
         [System.Web.Mvc.AcceptVerbs("POST", "HEAD")]
-        [POST("matchs/addMatch")]
+        [POST("matches/addMatch")]
         public MatchModel AddMatch([FromBody] MatchModel model)
         {
             var newMatch = _mappingEngine.Map<MatchModel, Match>(model);
