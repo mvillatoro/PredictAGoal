@@ -24,5 +24,16 @@ angular.module('app.controllers')
             $scope.$on('$viewContentLoaded', function() {
                 $window.ga('send', 'pageview', { 'page': $location.path(), 'title': $scope.$root.title });
             });
+
+            $scope.availableMatches = [];
+
+            $scope.loadMatches = function () {
+                League.getMatch(function (availableMatches) {
+                    $scope.availableMatches = availableMatches;
+                }, function (error) {
+                    alert('error loading available teams');
+                });
+            };
+
         }
     ]);

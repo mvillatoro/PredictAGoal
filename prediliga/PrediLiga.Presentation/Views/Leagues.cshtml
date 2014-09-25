@@ -16,23 +16,26 @@
             </div>
         </div>
     </div>
-    <div>
+    <div ng-init="loadMatches()">
         <h1>My Table</h1>
         <table class="table table-hover">
             <tr>
                 <td> </td>
-                <td>LIGA</td>
-                <td> </td>
-                <td> </td>
-                <td> </td>
+                <td>Liga </td>
+                <td>Equipo Casa</td>
+                <td>Marcador Casa </td>
+                <td>Marcador Visita</td>
+                <td>Equipo Casa </td>
                 <td> </td>
             </tr>
-            <tr ng-repeat="availableLeague in availableLeagues">
+            <tr ng-repeat="availableMatch in availableMatches">
                 <td>   </td>
-                <td>{{availableLeague.Name}}</td>
+                <td>{{availableMatch.Liga}}</td>
+                <td>{{availableMatch.EquipoCasa}}</td>
+                <td> - </td>
+                <td> - </td>
+                <td>{{availableMatch.EquipoVisita}}</td>
                 <td><a class=" btn btn-success" href="/predict-a-goal"> Predict-A-Goal</a></td>
-                <td>Ver Calendario</td>
-                <td><a class=" btn btn-danger"> Unfollow</a></td>
             </tr>
         </table>
     </div>

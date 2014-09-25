@@ -46,13 +46,11 @@
             <td>Liga</td>
             <td> </td>
             <td> </td>
-            <td> </td>
         </tr>
         <tr ng-repeat="availableTeam in availableTeams">
             <td>   </td>
             <td>{{availableTeam.Name}}</td>
             <td>{{availableTeam.Liga}}</td>
-            <td><button class="btn btn-primary" type="submit">  Calendar</button></td>
             <td><button class="btn btn-primary" type="submit">  Edit</button></td>
             <td>
                 <form ng-submit="Delete(availableLeague.Id)">
