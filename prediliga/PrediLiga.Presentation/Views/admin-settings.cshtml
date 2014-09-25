@@ -45,6 +45,8 @@
             <td>Equipo </td>
             <td>Liga</td>
             <td> </td>
+            <td> </td>
+            <td> </td>
         </tr>
         <tr ng-repeat="availableTeam in availableTeams">
             <td>   </td>
@@ -54,7 +56,7 @@
             <td><button class="btn btn-primary" type="submit">  Edit</button></td>
             <td>
                 <form ng-submit="Delete(availableLeague.Id)">
-                    <button class="btn btn-danger" type="submit">  Disable League</button>
+                    <button class="btn btn-danger" type="submit">  Disable Team</button>
                 </form>
             </td>
         </tr>
@@ -87,9 +89,9 @@
             <td>Marcador Casa </td>
             <td>Marcador Visita</td>
             <td>Equipo Casa </td>
+            <td> </td>
+            <td> </td>
         </tr>
-        
-
         <tr ng-repeat="availableMatch in availableMatches">
             <td>   </td>
             <td>{{availableMatch.Liga}}</td>
@@ -97,11 +99,10 @@
             <td> - </td>
             <td> - </td>
             <td>{{availableMatch.EquipoVisita}}</td>
-            <td><button class="btn btn-primary" type="submit">  Calendar</button></td>
             <td><button class="btn btn-primary" type="submit">  Edit</button></td>
             <td>
                 <form ng-submit="Delete(availableLeague.Id)">
-                    <button class="btn btn-danger" type="submit">  Disable League</button>
+                    <button class="btn btn-danger" type="submit">  Disable Match</button>
                 </form>
             </td>
         </tr>
@@ -111,19 +112,18 @@
     </form>
     <div class="col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4" ng-show="ShowEdit3">
         <h3>Add New Match</h3>
-        <form ng-submit="AddMach()" method='post'>
+        <form ng-submit="AddMatch()" method='post'>
             <select class="form-control" ng-model="match.Liga">
                 <option ng-repeat="availableLeague in availableLeagues" ng-model="match.Liga">{{availableLeague.Name}}</option>
             </select>
 
             <select class="form-control" ng-model="match.EquipoCasa">
-                <option ng-repeat="availableLeague in availableLeagues" ng-model="match.EquipoCasa">{{availableTeam.Name}}</option>
+                <option ng-repeat="availableTeam in availableTeams" ng-model="match.EquipoCasa">{{availableTeam.Name}}</option>
             </select>            
             
             <select class="form-control" ng-model="match.EquipoVisita">
-                <option ng-repeat="availableLeague in availableLeagues" ng-model="match.EquipoVisita">{{availableTeam.Name}}</option>
+                <option ng-repeat="availableTeam in availableTeams" ng-model="match.EquipoVisita">{{availableTeam.Name}}</option>
             </select>
-
 
             <button class="btn btn-success" type="submit" ng-disabled="!(match)" disabled> Done</button>
         </form>

@@ -52,6 +52,13 @@ angular.module('app', ['ngCookies','ui.router', 'app.filters', 'app.services', '
                 templateUrl: '/views/admin-settings',
                 controller: 'AdminSettingsCtrl'
             })
+
+            .state('predict-a-goal', {
+                url: '/predict-a-goal',
+                layout: 'basic',
+                templateUrl: '/views/Predict',
+                controller: 'PredictAGoalCtrl'
+            })
             .state('otherwise', {
                 url: '*path',
                 templateUrl: '/views/404',

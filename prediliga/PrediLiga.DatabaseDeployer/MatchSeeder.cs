@@ -19,10 +19,7 @@ namespace PrediLiga.DatabaseDeployer
             {
                 Liga = "BBVA",
                 EquipoCasa = "FC Barcelona",
-                EquipoVisita = "Elche FC",
-                MarcadorCasa = 0,
-                MarcadorVisita = 0,
-                IsClosed = false
+                EquipoVisita = "Elche FC"
             };
             _session.Save(match);
         }

@@ -509,6 +509,7 @@
     <Content Include="Views\Register.cshtml" />
     <Content Include="Views\Leagues.cshtml" />
     <Content Include="Views\admin-settings.cshtml" />
+    <Content Include="Views\Predict.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

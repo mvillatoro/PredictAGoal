@@ -36,9 +36,10 @@ angular.module('app.controllers', [])
                 if ($scope.ShowEdit3 === true) {
                     $scope.ShowEdit3 = false;
                 } else {
-                    $scope.ShowEdit13 = true;
+                    $scope.ShowEdit3 = true;
                 }
             };
+
             //Crear Liga
             $scope.AddLeague = function () {
                 League.AddLeague($scope.league, function (response) {
@@ -145,7 +146,7 @@ angular.module('app.controllers', [])
                 League.AddMatch($scope.match, function (response) {
 
                     $scope.AddPartido();
-                    $scope.loadMatch();
+                    $scope.loadMatches();
                     alert('Success');
 
                 }, function (error) {
@@ -155,4 +156,15 @@ angular.module('app.controllers', [])
             };
             
         }
+
+                // Path: /predict-a-goal
+    .controller('PredictAGoalCtrl', ['$scope', '$location', '$window', function ($scope, $location, $window) {
+        $scope.$root.title = 'AngularJS SPA | Forgot Password';
+        $scope.allCool = function () {
+            $scope.ShowMessage = true;
+            $location.path('/leagues');
+
+        };
+
+    }])
     ]);

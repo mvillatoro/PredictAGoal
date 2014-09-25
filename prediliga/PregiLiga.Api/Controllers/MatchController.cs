@@ -32,7 +32,7 @@ namespace PregiLiga.Api.Controllers
         [System.Web.Mvc.HttpGet]
         [System.Web.Mvc.AcceptVerbs("GET", "HEAD")]
         [GET("matches/available")]
-        public List<MatchModel> GetMatchs()
+        public List<MatchModel> GetMatches()
         {
             // var userTokenModel = GetUserTokenModel();
             // if (userTokenModel == null)
