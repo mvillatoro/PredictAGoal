@@ -19,11 +19,7 @@
             <td>{{availableLeague.Name}}</td>
             <td><button class="btn btn-primary" type="submit">  Calendar</button></td>
             <td><button class="btn btn-primary" type="submit">  Edit</button></td>
-            <td>
-                <form ng-submit="Delete(availableLeague.Id)">
-                    <button class="btn btn-danger" type="submit">  Disable League</button>
-                </form>
-            </td>
+            <td><button class="btn btn-danger" ng-click="Deleter(availableLeague.Id)">  Disable League</button></td>
         </tr>
     </table>
     <form ng-submit="AddLiga()">
@@ -41,19 +37,20 @@
         </form>
     </div>
 </div>
-<div>
+<div ng-init="loadTeams()">
     <h1>Teams</h1>
     <table class="table table-hover">
         <tr>
             <td> </td>
+            <td>Equipo </td>
             <td>Liga</td>
             <td> </td>
             <td> </td>
-            <td> </td>
         </tr>
-        <tr>
+        <tr ng-repeat="availableTeam in availableTeams">
             <td>   </td>
-            <td>{ARREGLAR!!!}</td>
+            <td>{{availableTeam.Name}}</td>
+            <td>{{availableTeam.Liga}}</td>
             <td><button class="btn btn-primary" type="submit">  Calendar</button></td>
             <td><button class="btn btn-primary" type="submit">  Edit</button></td>
             <td>
@@ -71,7 +68,7 @@
         <form ng-submit="AddLeague()">
             <input ng-model="league.Id" type="number" class="form-control" placeholder="League ID" required />
             <input ng-model="league.Name" type="text" class="form-control" placeholder="League Name" required autofocus />
-            <button class="btn btn-success" type="submit" ng-disabled="!(league)" disabled> Done</button> 
+            <button class="btn btn-success" type="submit" ng-disabled="!(league)" disabled> Done</button>
         </form>
         <form ng-submit="AddTeam()">
             <button class="btn btn-danger" type="submit"> Cancel</button>

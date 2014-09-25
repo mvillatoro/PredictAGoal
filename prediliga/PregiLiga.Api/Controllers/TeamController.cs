@@ -28,5 +28,21 @@ namespace PregiLiga.Api.Controllers
             _mappingEngine = mappingEngine;
         }
 
+
+        [System.Web.Mvc.HttpGet]
+        [System.Web.Mvc.AcceptVerbs("GET", "HEAD")]
+        [GET("teams/available")]
+        public List<TeamModel> GetTeams()
+        {
+            // var userTokenModel = GetUserTokenModel();
+            // if (userTokenModel == null)
+            //     throw new HttpException((int)HttpStatusCode.Unauthorized, "User is not authorized");
+
+            var teams = _readOnlyRepository.GetAll<Team>().ToList();
+            var teamsModel = _mappingEngine.Map<List<Team>, List<TeamModel>>(teams);
+            return teamsModel;
+        }
+
+
     }
 }

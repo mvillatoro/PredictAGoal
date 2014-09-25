@@ -2,7 +2,7 @@
 angular.module('app.controllers', [])   
 
     .controller('AdminSettingsCtrl', [
-        '$scope', '$location', '$window', 'League', function ($scope, $location, $window, League) {
+        '$scope', '$location', '$window', 'League', 'Teams', function ($scope, $location, $window, League, Teams) {
             $scope.$root.title = 'AngularJS SPA | Admin Settings';
 
             $scope.availableLeagues = [];
@@ -52,8 +52,8 @@ angular.module('app.controllers', [])
                 $scope.league = {};
             };
 
-            //Borrar Liga
-            $scope.Delete = function (Id) {
+            //DELETE LEAGUE
+            $scope.Deleter = function (Id) {
                 League.DeleteLeague(Id, function (response) {
 
                     //  alert('Success');
@@ -64,9 +64,10 @@ angular.module('app.controllers', [])
                 $scope.league = {};
             };
 
+
             $scope.MyDeleter = function (myleague) {
                 $scope.league = myleague;
-                $scope.Delete(myleague.Id);
+                $scope.Deleter(myleague.Id);
                 $scope.league = {};
             };
 
@@ -93,6 +94,16 @@ angular.module('app.controllers', [])
             $scope.$on('$viewContentLoaded', function () {
                 $window.ga('send', 'pageview', { 'page': $location.path(), 'title': $scope.$root.title });
             });
+
+            $scope.availableTeams= [];
+
+            $scope.loadTeams = function () {
+                Team.getTeams(function (availableTeams) {
+                    $scope.availableTeams = availableTeams;
+                }, function (error) {
+                    alert('error loading available leagues');
+                });
+            };
 
         }
     ]);
