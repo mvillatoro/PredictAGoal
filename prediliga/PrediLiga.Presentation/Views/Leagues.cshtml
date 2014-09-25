@@ -1,0 +1,58 @@
+﻿
+<div ng-init="loadLeagues()">
+    <div class="row">
+        <div role="main" class="container theme-showcase">
+            <ul class="nav navbar-nav navbar-right">
+                <a href="/my-profile" class="btn btn-primary">Profile</a>
+                <a href="/admin-settings" class="btn btn-primary">Admin Settings</a>
+                <a href="/" class="btn btn-danger">Log Out</a>
+            </ul>
+        </div>
+        <div class="col-sm-4 col-md-4 user-details">
+            <div class="user-image">
+                <h3>
+                    <img class="pic img-circle" src="http://www.therpf.com/uploads/avatars/avatar44216_4.gif" alt="...">       Wade Wilson
+                </h3>
+            </div>
+        </div>
+    </div>
+    <div>
+        <h1>My Table</h1>
+        <table class="table table-hover">
+            <tr>
+                <td> </td>
+                <td>LIGA</td>
+                <td> </td>
+                <td> </td>
+                <td> </td>
+                <td> </td>
+            </tr>
+            <tr ng-repeat="availableLeague in availableLeagues">
+                <td>   </td>
+                <td>{{availableLeague.Name}}</td>
+                <td><a class=" btn btn-success" href="/predict-a-goal"> Predict-A-Goal</a></td>
+                <td>Ver Calendario</td>
+                <td><a class=" btn btn-danger"> Unfollow</a></td>
+            </tr>
+        </table>
+    </div>
+    <div>
+        <h1>My Leagues</h1>
+        <table class="table table-hover">
+            <tr>
+                <td> </td>
+                <td>LIGA</td>
+                <td></td>
+                <td> </td>
+                <td> </td>
+                <td> </td>
+            </tr>
+            <tr ng-repeat="availableLeague in availableLeagues">
+                <td>   </td>
+                <td>{{availableLeague.Name}}</td>
+                <td>Ver Calendario</td>
+                <td><a class=" btn btn-danger"> Unfollow</a></td>
+            </tr>
+        </table>
+    </div>
+</div>
